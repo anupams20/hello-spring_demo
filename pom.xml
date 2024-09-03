@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>io.fabric8</groupId>
 			<artifactId>kubernetes-client</artifactId>
-			<version>latest-version</version>
+			<version>6.5.0</version>
 		</dependency>
 		
 
