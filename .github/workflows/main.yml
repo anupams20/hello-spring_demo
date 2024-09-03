@@ -23,6 +23,7 @@ jobs:
   testing_part:
     runs-on: ubuntu-latest
     needs: building_part
+    working-directory: ./pom.xml
     steps:
       - name: Test project
         run: mvn clean test
