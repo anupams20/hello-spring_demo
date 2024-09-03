@@ -24,7 +24,7 @@ jobs:
       - name: List target directory after build
         run: |
           echo "Listing contents of target directory after build:"
-          ls -la target/
+          ls -la newtarget/
 
 
   testing_part:
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
-          path: target/  # Specify the correct path relative to the repository root
+          path: newtarget/  # Specify the correct path relative to the repository root
 
       - name: Push build artifacts to a new branch
         run: |
