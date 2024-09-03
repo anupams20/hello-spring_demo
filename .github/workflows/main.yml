@@ -1,0 +1,49 @@
+name: Assignment_of_GHA
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+jobs:
+  building_part:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build project
+        run: mvn clean install
+
+  testing_part:
+    runs-on: ubuntu-latest
+    needs: building_part
+    steps:
+      - name: Test project
+        run: mvn test
+
+  artifact_upload:
+    runs-on: ubuntu-latest
+    needs: testing_part
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: target/
+
+      - name: Push build artifacts to a new branch
+        run: |
+          git config user.name "anupams20"
+          git config user.email "anupams20@iitk.ac.in"
+          git checkout -b artefacts-store
+          git add .
+          git commit -m "Upload build artifacts"
+          git push origin artefacts-store
