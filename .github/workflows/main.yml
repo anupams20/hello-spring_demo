@@ -19,7 +19,13 @@ jobs:
 
       - name: Build project
         run: mvn clean install -X
-        working-directory: ./  # This assumes the pom.xml is in the root of the repository
+        working-directory: ./ 
+
+      - name: List target directory after build
+        run: |
+          echo "Listing contents of target directory after build:"
+          ls -la target/
+
 
   testing_part:
     runs-on: ubuntu-latest
