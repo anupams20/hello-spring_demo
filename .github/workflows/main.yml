@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build project
-        run: mvn clean install
+        run: mvn clean install -X
 
   testing_part:
     runs-on: ubuntu-latest
