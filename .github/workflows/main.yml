@@ -18,7 +18,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build project
-        run: mvn clean install -X
+        run: mvn clean install
+        working-directory: hello-spring_demo  # Navigate to the correct directory
 
   testing_part:
     runs-on: ubuntu-latest
@@ -26,6 +27,7 @@ jobs:
     steps:
       - name: Test project
         run: mvn clean test
+        working-directory: hello-spring_demo  # Navigate to the correct directory
 
   artifact_upload:
     runs-on: ubuntu-latest
@@ -37,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
-          path: target/
+          path: hello-spring_demo/target/  # Specify the correct path
 
       - name: Push build artifacts to a new branch
         run: |
@@ -47,3 +49,4 @@ jobs:
           git add .
           git commit -m "Upload build artifacts"
           git push origin artefacts-store
+        working-directory: hello-spring_demo  # Ensure you're in the correct directory
