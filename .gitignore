@@ -25,7 +25,7 @@
 /.nb-gradle/
 
 ### Stuff I normally add
-target/
+
 *.iml
 *.log
 *.class
