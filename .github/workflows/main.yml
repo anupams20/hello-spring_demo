@@ -18,22 +18,20 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Print current directory
-        run: pwd  # Print the current working directory
+        run: pwd 
 
       - name: List files
-        run: ls -la  # List all files in the current directory
+        run: ls -la  
 
       - name: Build project
-        run: mvn clean install -X
-        working-directory: hello-spring_demo  # Adjust this path based on actual structure
+        run: mvn clean install 
 
   testing_part:
     runs-on: ubuntu-latest
     needs: building_part
     steps:
       - name: Test project
-        run: mvn clean test
-        working-directory: hello-spring_demo  # Adjust this path based on actual structure
+        run: mvn clean test  # No need for working-directory here
 
   artifact_upload:
     runs-on: ubuntu-latest
@@ -45,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
-          path: hello-spring_demo/target/  # Adjust this path based on actual structure
+          path: target/  # The path is relative to the current directory
 
       - name: Push build artifacts to a new branch
         run: |
@@ -55,4 +53,3 @@ jobs:
           git add .
           git commit -m "Upload build artifacts"
           git push origin artefacts-store
-        working-directory: hello-spring_demo  # Adjust this path based on actual structure
