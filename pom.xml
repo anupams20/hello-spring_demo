@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>io.fabric8</groupId>
 			<artifactId>kubernetes-client</artifactId>
-			<version>${k8s.client.version}</version>
+			<version>latest-version</version>
 		</dependency>
 		
 
@@ -83,6 +83,7 @@
 				</executions>
 				<configuration>
 					 <mode>docker</mode>
+					 <platformMode>kubernetes</platformMode>
 					<resources>
 						<labels>
 							<all>
