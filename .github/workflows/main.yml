@@ -47,6 +47,7 @@ jobs:
           path: target/  
       - name: Print current working directory
         run: pwd
+        working-directory: ./
 
       - name: List entire repository structure
         run: ls -R
