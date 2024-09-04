@@ -20,11 +20,8 @@ jobs:
       - name: Build project
         run: mvn clean install -X
         working-directory: ./ 
-
-      - name: List target directory after build
-        run: |
-          echo "Listing contents of target directory after build:"
-          ls -la target/
+      - name: Verify build artifacts
+        run: ls -la target/
 
 
   testing_part:
@@ -54,6 +51,6 @@ jobs:
           git config user.name "anupams20"
           git config user.email "anupams20@iitk.ac.in"
           git checkout -b artefacts-store
-          git add .
+          git add target/
           git commit -m "Upload build artifacts"
           git push origin artefacts-store
