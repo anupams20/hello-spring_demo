@@ -52,5 +52,5 @@ jobs:
           git config user.email "anupams20@iitk.ac.in"
           git checkout -b artefacts-store
           git add target/hello-0.0.1-SNAPSHOT.jar
-          git commit -m "Upload build artifacts"
+          git commit -m "Upload build artifacts" || echo "No changes to commit"
           git push origin artefacts-store
