@@ -44,7 +44,22 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
-          path: target/  # Specify the correct path relative to the repository root
+          path: target/  
+      - name: Print current working directory
+        run: pwd
+
+      - name: List entire repository structure
+        run: ls -R
+
+      - name: Verify if artifact exists
+        run: |
+          if [ -f target/hello-0.0.1-SNAPSHOT.jar ]; then
+            echo "Artifact exists!"
+          else
+            echo "Artifact does not exist!"
+            exit 1
+          fi
+
 
       - name: Push build artifacts to a new branch
         run: |
