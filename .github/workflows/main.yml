@@ -39,10 +39,11 @@ jobs:
     needs: testing_part
     steps:
       - uses: actions/checkout@v2
-      - name: to change directory
+      
+      - name: Print current working directory
+        run: pwd
         working-directory: ./
-     
-
+        
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
