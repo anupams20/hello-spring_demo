@@ -1,0 +1,23 @@
+name: Download_Artifact_Pipeline
+
+on:
+  workflow_run:
+    workflows: ["Assignment_of_GHA"]
+    types:
+      - completed
+
+jobs:
+  download_artifact:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./artifacts
+
+      - name: Display files
+        run: ls -al ./artifacts
