@@ -34,6 +34,7 @@ jobs:
           git config user.name "anupams20"
           git config user.email "anupams20@iitk.ac.in"
           git checkout -b artefacts-store
+          git pull origin artefacts-store
           git add .
           git commit -m "Upload build artifacts"
           git push origin artefacts-store
